@@ -55,7 +55,7 @@ namespace AddressBook
                         contacts.Email = Console.ReadLine();
 
 
-                        add.contactList.Add(contacts);
+                        add.contactList.Add(contacts.FirstName,contacts);
 
                         // add.showList();    
                         break;
@@ -72,6 +72,9 @@ namespace AddressBook
                         System.Console.WriteLine("Enter First Name to Delete the contact you want");
                         string dName = Console.ReadLine();
                         add.deleteContact(dName);
+                        break;
+                        default:
+                        book = false;
                         break;
                 }
 
