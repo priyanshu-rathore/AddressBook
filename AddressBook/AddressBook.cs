@@ -34,10 +34,29 @@ namespace AddressBook
             }
         }
 
-        public void editContact( string fName){
-            foreach(var contact in contactList)
+
+        public void deleteContact(string fName)
+        {
+            Contacts deleteContact = null;
+            bool isFound = false;
+
+            foreach (var contact in contactList)
             {
-                if(contact.FirstName == fName)
+                if (contact.FirstName == fName)
+                {
+                    deleteContact = contact;
+                    isFound = true;
+                }
+            }
+            if (isFound == true) contactList.Remove(deleteContact);
+
+        }
+
+        public void editContact(string fName)
+        {
+            foreach (var contact in contactList)
+            {
+                if (contact.FirstName == fName)
                 {
                     Console.WriteLine("Edit? Old FirstName: " + contact.FirstName);
                     string newFirstName = Console.ReadLine();
@@ -57,7 +76,7 @@ namespace AddressBook
                     string newEmail = Console.ReadLine();
                     Console.WriteLine("-----------------");
 
-                    if(newFirstName != "")
+                    if (newFirstName != "")
                     {
                         contact.FirstName = newFirstName;
                     }

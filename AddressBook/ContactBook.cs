@@ -2,7 +2,7 @@ using System;
 
 namespace AddressBook
 {
-    class ContactBook : addressBook
+    class ContactBook
     {
 
         public static void addressBook()
@@ -19,7 +19,7 @@ namespace AddressBook
 
             while (book == true)
             {
-                System.Console.WriteLine("1) Add Contact \n 2). Edit Contact \n 3). Show Contact" );
+                System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact" );
 
                 int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -55,7 +55,7 @@ namespace AddressBook
                         contacts.Email = Console.ReadLine();
 
 
-                        add.addContact(contacts.FirstName, contacts.LastName, contacts.Address, contacts.State, contacts.City, contacts.Zip, contacts.PhoneNumber, contacts.Email);
+                        add.contactList.Add(contacts);
 
                         // add.showList();    
                         break;
@@ -67,6 +67,11 @@ namespace AddressBook
                         break;
                         case 3:
                         add.showList();
+                        break;
+                        case 4:
+                        System.Console.WriteLine("Enter First Name to Delete the contact you want");
+                        string dName = Console.ReadLine();
+                        add.deleteContact(dName);
                         break;
                 }
 
