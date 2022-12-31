@@ -4,16 +4,22 @@ namespace AddressBook
 {
     class Contacts
     {
-        string firstName;
-        string lastName;
-        string address;
-        string city;
-        string state;
-        string zip;
-        string phoneNumber;
-        string  email;
+        private string firstName;
+        private string lastName;
+        private string address;
+        private string city;
+        private string state;
+        private string zip;
+        private string phoneNumber;
+        private string email;
 
-        public Contacts(string firstName,string lastName,string address,string city,string state,string zip,string phoneNumber,string email){
+        public Contacts()
+        {
+
+        }
+
+        public Contacts(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
+        {
             this.firstName = firstName;
             this.lastName = lastName;
             this.address = address;
