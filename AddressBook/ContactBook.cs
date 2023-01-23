@@ -19,7 +19,7 @@ namespace AddressBook
 
             while (book == true)
             {
-                System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact \n 5). Search Contact" );
+                System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact \n 5). Search Contact \n 6). Search Contact by City or State" );
 
                 int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -81,6 +81,11 @@ namespace AddressBook
                         string last = Console.ReadLine();
                         Contacts cont = add.SearchContact(first, last);
                         add.showList(cont);
+                        break;
+                    case 6:
+                        Console.WriteLine("Enter city or state");
+                        string cityOrState = Console.ReadLine();
+                        add.SearchByCityOrState(cityOrState);
                         break;
                         default:
                         book = false;
