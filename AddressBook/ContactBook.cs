@@ -55,7 +55,7 @@ namespace AddressBook
                         contacts.Email = Console.ReadLine();
 
 
-                        add.contactList.Add(contacts);
+                        add.contactList.Add(contacts.FirstName,contacts);
 
                         // add.showList();    
                         break;
