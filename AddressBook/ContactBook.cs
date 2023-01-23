@@ -19,7 +19,7 @@ namespace AddressBook
 
             while (book == true)
             {
-                System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact" );
+                System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact \n 5). Search Contact" );
 
                 int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -55,7 +55,7 @@ namespace AddressBook
                         contacts.Email = Console.ReadLine();
 
 
-                        add.contactList.Add(contacts.FirstName,contacts);
+                        add.contactList.Add(contacts);
 
                         // add.showList();    
                         break;
@@ -72,6 +72,15 @@ namespace AddressBook
                         System.Console.WriteLine("Enter First Name to Delete the contact you want");
                         string dName = Console.ReadLine();
                         add.deleteContact(dName);
+                        break;
+                    case 5:
+                        Console.WriteLine("Search Contact");
+                        Console.WriteLine("Enter First Name");
+                        string first = Console.ReadLine();
+                        Console.WriteLine("Enter Last Name");
+                        string last = Console.ReadLine();
+                        Contacts cont = add.SearchContact(first, last);
+                        add.showList(cont);
                         break;
                         default:
                         book = false;
