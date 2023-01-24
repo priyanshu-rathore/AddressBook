@@ -28,6 +28,8 @@ namespace AddressBook
                 {
                     Console.WriteLine(result.FirstName + " " + result.LastName + " - " + result.City + " , " + result.State);
                 }
+
+                Console.WriteLine(searchResults.Count + "Person contacts present");//UC10
             }
             else
             {
