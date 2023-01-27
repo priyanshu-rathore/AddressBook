@@ -20,7 +20,7 @@ namespace AddressBook
             while (book == true)
             {
                 System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact \n 5). Search Contact \n 6). Search Contact by City or State" );
-
+                Console.WriteLine("\n 7.) Add no duplicate contact");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -55,7 +55,7 @@ namespace AddressBook
                         contacts.Email = Console.ReadLine();
 
 
-                        add.contactList.Add(contacts.FirstName,contacts);
+                        add.addContact(contacts.FirstName, contacts.LastName,contacts.Address, contacts.City, contacts.State, contacts.Zip, contacts.PhoneNumber, contacts.Email);
 
                         // add.showList();    
                         break;

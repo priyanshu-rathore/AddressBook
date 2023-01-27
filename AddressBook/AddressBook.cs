@@ -1,17 +1,22 @@
 using System;
 using System.Collections.Immutable;
+using System.Reflection.Metadata.Ecma335;
 
 namespace AddressBook
 {
     class addressBook
     {
-        public SortedDictionary<string, Contacts> contactList;
+        public SortedDictionary<string, Contacts> contactList;//UC
 
         public addressBook()
         {
             this.contactList = new SortedDictionary<string, Contacts>();
         }
 
+     
+        
+    
+        
        
        
         public void SearchByCityOrState(string cityOrState)//UC8
@@ -45,7 +50,27 @@ namespace AddressBook
             public void addContact(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
         {
             Contacts newContact = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email);
-            this.contactList.Add(firstName, newContact);
+
+            if (contactList.Count > 0)
+            {
+                foreach (var contacts in contactList)
+                {
+                    if (contacts.Value.FirstName.Equals(newContact.FirstName))
+                    {
+                        Console.WriteLine("\nDuplicate Entry");
+                    }
+                    else
+                    {
+                        this.contactList.Add(firstName, newContact);
+                    }
+
+                }
+            }
+            else
+            {
+                this.contactList.Add(firstName, newContact);
+            }
+
 
         }
 
