@@ -6,15 +6,20 @@ namespace AddressBook
 {
     class addressBook
     {
-        public SortedDictionary<string, Contacts> contactList;//UC
+        public Dictionary<string, Contacts> contactList;//UC
 
         public addressBook()
         {
-            this.contactList = new SortedDictionary<string, Contacts>();
+            this.contactList = new Dictionary<string, Contacts>();
         }
 
      
-        
+        public void SortByName()//UC11
+        {
+            Dictionary<string, Contacts> sort = (Dictionary<string,Contacts>)contactList.OrderBy(x => x.Key);
+
+            contactList = sort;
+        }
     
         
        
@@ -53,11 +58,11 @@ namespace AddressBook
 
             if (contactList.Count > 0)
             {
-                foreach (var contacts in contactList)
+                foreach (var contact in contactList)
                 {
-                    if (contacts.Value.FirstName.Equals(newContact.FirstName))
+                    if (contact.Value.FirstName.Equals(newContact.FirstName))
                     {
-                        Console.WriteLine("\nDuplicate Entry");
+                        Console.WriteLine("Duplicate Entry");
                     }
                     else
                     {
@@ -69,6 +74,7 @@ namespace AddressBook
             else
             {
                 this.contactList.Add(firstName, newContact);
+
             }
 
 
