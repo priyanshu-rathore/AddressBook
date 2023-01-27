@@ -1,15 +1,19 @@
 using System;
+using System.Collections.Immutable;
 
 namespace AddressBook
 {
     class addressBook
     {
-        public Dictionary<string, Contacts> contactList;
+        public SortedDictionary<string, Contacts> contactList;
 
         public addressBook()
         {
-            this.contactList = new Dictionary<string, Contacts>();
+            this.contactList = new SortedDictionary<string, Contacts>();
         }
+
+       
+       
         public void SearchByCityOrState(string cityOrState)//UC8
         {
             List<Contacts> searchResults = new List<Contacts>();
