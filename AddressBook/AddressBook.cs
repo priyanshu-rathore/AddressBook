@@ -7,23 +7,60 @@ namespace AddressBook
     class addressBook
     {
         public Dictionary<string, Contacts> contactList;//UC
+        public List<Contacts> contacts;
 
         public addressBook()
         {
             this.contactList = new Dictionary<string, Contacts>();
+            this.contacts = new List<Contacts>(contactList.Values);
         }
 
-     
-        public void SortByName()//UC11
+        public void SortName()//UC11
         {
-            Dictionary<string, Contacts> sort = (Dictionary<string,Contacts>)contactList.OrderBy(x => x.Key);
+            SortByName sortByName= new SortByName();
 
-            contactList = sort;
+            contacts.Sort(sortByName);
         }
     
-        
-       
-       
+        public void SortCity()//UC12
+        {
+            SortByCity sortByCity = new SortByCity();
+            contacts.Sort(sortByCity);
+        }
+
+        public void SortState()//UC12
+        {
+            SortByState sortByState = new SortByState();
+            contacts.Sort(sortByState);
+        }
+
+        public void SortZip()//UC12
+        {
+            SortByZip sortByZip = new SortByZip();
+            contacts.Sort(sortByZip);
+        }
+     
+   
+
+        public override string ToString()
+        {
+            try {
+                foreach (var contact in contacts)
+                {
+                    return "First Name " + contact.FirstName + "\nLast Name "+ contact.LastName   ;
+                }
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+
+            return default;
+           
+        }
+
+
+
         public void SearchByCityOrState(string cityOrState)//UC8
         {
             List<Contacts> searchResults = new List<Contacts>();
@@ -63,10 +100,12 @@ namespace AddressBook
                     if (contact.Value.FirstName.Equals(newContact.FirstName))
                     {
                         Console.WriteLine("Duplicate Entry");
+                        break;
                     }
                     else
                     {
                         this.contactList.Add(firstName, newContact);
+                        break;
                     }
 
                 }
@@ -82,16 +121,16 @@ namespace AddressBook
 
         public void showList()
         {
-            foreach (var contact in contactList)
+            foreach (var contact in contacts)
             {
-                Console.WriteLine("FirstName: " + contact.Value.FirstName);
-                Console.WriteLine("LastName: " + contact.Value.LastName);
-                Console.WriteLine("Address: " + contact.Value.Address);
-                Console.WriteLine("City: " + contact.Value.City);
-                Console.WriteLine("State: " + contact.Value.State);
-                Console.WriteLine("ZipCode: " + contact.Value.Zip);
-                Console.WriteLine("Phone Number: " + contact.Value.PhoneNumber);
-                Console.WriteLine("Email: " + contact.Value.Email);
+                Console.WriteLine("FirstName: " + contact.FirstName);
+                Console.WriteLine("LastName: " + contact.LastName);
+                Console.WriteLine("Address: " + contact.Address);
+                Console.WriteLine("City: " + contact.City);
+                Console.WriteLine("State: " + contact.State);
+                Console.WriteLine("ZipCode: " + contact.Zip);
+                Console.WriteLine("Phone Number: " + contact.PhoneNumber);
+                Console.WriteLine("Email: " + contact.Email);
                 Console.WriteLine("-----------------");
             }
         }
@@ -199,6 +238,37 @@ namespace AddressBook
             Console.WriteLine("Phone Number: " + contact.PhoneNumber);
             Console.WriteLine("Email: " + contact.Email);
             Console.WriteLine("-----------------");
+        }
+
+        private class SortByName : IComparer<Contacts>//UC11
+        {
+            public int Compare(Contacts x, Contacts y)
+            {
+                return string.Compare(x.FirstName, y.FirstName);
+            }
+        }
+
+        private class SortByCity : IComparer<Contacts>//UC12
+        {
+            public int Compare(Contacts x,Contacts y)
+            {
+                return string.Compare(x.City, y.City);
+            }
+        }
+
+        private class SortByState : IComparer<Contacts> {
+            public int Compare(Contacts x, Contacts y)
+            {
+                return string.Compare(x.State, y.State);
+            }
+        }
+
+        private class SortByZip : IComparer<Contacts> 
+        {
+            public int Compare(Contacts x, Contacts y)
+            {
+                return string.Compare(x.Zip, y.Zip);
+            }
         }
     }
 }

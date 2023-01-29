@@ -2,6 +2,7 @@ using System;
 
 namespace AddressBook
 {
+    
     class Contacts
     {
         private string firstName;
@@ -39,5 +40,6 @@ namespace AddressBook
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Email { get => email; set => email = value; }
 
+       
     }
 }
