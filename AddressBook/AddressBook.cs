@@ -7,12 +7,12 @@ namespace AddressBook
     class addressBook
     {
         public Dictionary<string, Contacts> contactList;//UC
-        public List<Contacts> contacts;
+        public List<Contacts> contacts = new List<Contacts>();
 
         public addressBook()
         {
             this.contactList = new Dictionary<string, Contacts>();
-            this.contacts = new List<Contacts>(contactList.Values);
+            
         }
 
         public void SortName()//UC11
@@ -93,6 +93,7 @@ namespace AddressBook
         {
             Contacts newContact = new Contacts(firstName, lastName, address, city, state, zip, phoneNumber, email);
 
+
             if (contactList.Count > 0)
             {
                 foreach (var contact in contactList)
@@ -105,6 +106,7 @@ namespace AddressBook
                     else
                     {
                         this.contactList.Add(firstName, newContact);
+                        contacts.Add(newContact);
                         break;
                     }
 
@@ -113,7 +115,8 @@ namespace AddressBook
             else
             {
                 this.contactList.Add(firstName, newContact);
-
+                this.contacts.Add(newContact);
+                
             }
 
 

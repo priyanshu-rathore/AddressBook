@@ -20,7 +20,7 @@ namespace AddressBook
             while (book == true)
             {
                 System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact \n 5). Search Contact \n 6). Search Contact by City or State" );
-                Console.WriteLine("7). Sort by Name \n 8.Sort by City \n 9). Sort by State \n 10. Sort by Zip)");
+                Console.WriteLine(" 7). Sort by Name \n 8.Sort by City \n 9). Sort by State \n 10. Sort by Zip) \n 11). Save to File");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -99,7 +99,12 @@ namespace AddressBook
                     case 10:
                         add.SortZip();
                         break;
-                        default:
+                        case 11:
+                        FileIO file = new FileIO();
+                        file.WriterContactsToFile(add.contacts);
+                        file.ReadContactsFromFile();
+                        break;
+                    default:
                         book = false;
                         break;
                 }
