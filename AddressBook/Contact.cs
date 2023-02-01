@@ -1,17 +1,32 @@
+using LINQtoCSV;
 using System;
 
 namespace AddressBook
 {
-    
+    [Serializable]
     class Contacts
     {
+        [CsvColumn(Name ="First Name",FieldIndex =1)]
         private string firstName;
+        [CsvColumn(Name ="Last Name",FieldIndex =2)]
         private string lastName;
+        [CsvColumn(Name ="Address",FieldIndex =3)]    
         private string address;
+        [CsvColumn(Name = "City", FieldIndex = 4)]
+
         private string city;
+
+        [CsvColumn(Name = "State", FieldIndex = 5)]
+
         private string state;
+
+        [CsvColumn(Name = "Zip", FieldIndex = 6)]
+
         private string zip;
+
+        [CsvColumn(Name ="Phone Number",FieldIndex =7)]
         private string phoneNumber;
+        [CsvColumn(Name ="Email",FieldIndex =8)]
         private string email;
 
         public Contacts()

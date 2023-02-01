@@ -14,7 +14,7 @@ namespace AddressBook
         public void WriterContactsToFile(List<Contacts> contacts)
         {
 
-            //FileStream file = new FileStream(_file, FileMode.Create);
+            if(!File.Exists(_file)) File.Create(_file);
             using (StreamWriter writer = File.AppendText(_file))
             {
 
