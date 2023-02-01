@@ -21,6 +21,7 @@ namespace AddressBook
             {
                 System.Console.WriteLine("\n 1) Add Contact \n 2). Edit Contact \n 3). Show Contact \n 4). Delete Contact \n 5). Search Contact \n 6). Search Contact by City or State" );
                 Console.WriteLine(" 7). Sort by Name \n 8). Sort by City \n 9). Sort by State \n 10. Sort by Zip) \n 11). Save to File \n 12). Write in csv file \n 13). Read from csv File");
+                Console.WriteLine(" 14). Json Serialization \n 15). Json Deserialization");
                 int choice = Convert.ToInt32(Console.ReadLine());
 
                 switch (choice)
@@ -109,6 +110,12 @@ namespace AddressBook
                         break;
                     case 13:
                         csvIO.ReadCSV();
+                        break;
+                    case 14:
+                        JsonIO.JsonSerializer(add.contacts);
+                        break;
+                    case 15:
+                        JsonIO.JsonDeserializer();
                         break;
                     default:
                         book = false;
